@@ -1,0 +1,45 @@
+#checking of presence of ckd disease
+	# prepare data
+	trainingSet=[]
+	testSet=[]
+	loadDataset('dataset_ckd_train.csv', trainingSet)	
+	loadDataset1('dataset_ckd_test.csv', testSet)	
+	#print ('Train set: ',repr(len(trainingSet)))	
+	#print ('Train set: ', trainingSet)
+	#print ('Test set: ', repr(len(testSet)))
+	#print ('Test: ',testSet)
+	
+	# generate predictions
+	predictions=[]
+	k = 3
+	for x in range(len(testSet)):
+		neighbors = getNeighbors(trainingSet, testSet[x], k)
+		result = getResponse(neighbors)
+		predictions.append(result)		
+		print('> predicted=' + repr(result) + ', actual=' + repr(testSet[x][-1]))
+	accuracy = getAccuracy(testSet, predictions)
+	print('Accuracy: ' + repr(accuracy) + '%')
+	
+	
+	#checking of presence of ckd disease
+	trainingSet=[]
+	testSet=[]
+	loadDataset_ml('dataset_diabetes_train.csv', trainingSet)	
+	print ('Train set: ',repr(len(trainingSet)))		
+	#print ('Train set: ', trainingSet)
+	
+	loadDataset_ml1('dataset_diabetes_test.csv', testSet)		
+	print ('Test set: ', repr(len(testSet)))
+	print ('Test: ',testSet)
+	
+	# generate predictions
+	predictions=[]
+	k = 3
+	for x in range(len(testSet)):
+		neighbors = getNeighbors(trainingSet, testSet[x], k)
+		result = getResponse(neighbors)
+		predictions.append(result)		
+		print('> predicted=' + repr(result) + ', actual=' + repr(testSet[x][-1]))
+	accuracy = getAccuracy(testSet, predictions)
+	print('Accuracy: ' + repr(accuracy) + '%')		
+	

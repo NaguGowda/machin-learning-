@@ -1,0 +1,39 @@
+def loadDataset(filename, trainingSet=[]):
+	lines = csv.reader(open(filename, "r"))
+	dataset = list(lines)
+	#print(len(dataset),range(len(dataset)))		
+	
+	for x in range(len(dataset)):
+	        for y in range(9):
+	            dataset[x][y] = float(dataset[x][y])	        
+	            trainingSet.append(dataset[x])
+
+def loadDataset1(filename, testSet=[]):
+	lines1 = csv.reader(open(filename, "r"))
+	dataset1 = list(lines1)
+	print(len(dataset1),range(len(dataset1)))		
+	
+	for x in range(len(dataset1)):
+	        for y in range(9):
+	            dataset1[x][y] = float(dataset1[x][y])	        
+	            	        
+	testSet.append(dataset1[x])	
+	
+	
+	trainingSet=[]	
+	testSet=[]
+	splitRatio = 0.67
+	loadDataset('dataset_diabetes_train.csv', trainingSet)
+	loadDataset1('dataset_diabetes_test.csv', testSet)
+	#print(trainingSet)
+	#print(testSet)
+	# prepare model
+	summaries = summarizeByClass(trainingSet)
+	#print(summaries)	
+	# test model
+	predictions = getPredictions(summaries, testSet)
+	print(predictions)
+	
+	accuracy = getAccuracy(testSet, predictions)
+	#print('Accuracy: {0}%').format(accuracy)
+	print('Accuracy: ',accuracy)

@@ -1,0 +1,12 @@
+https://www.kaggle.com/mansoordaku/ckdisease/downloads/ckdisease.zip/1
+
+
+
+heart disease:
+https://www.kaggle.com/sonumj/heart-disease-dataset-from-uci
+
+diabetes:
+https://www.kaggle.com/uciml/pima-indians-diabetes-database
+
+ckd:
+https://www.kaggle.com/mansoordaku/ckdisease
